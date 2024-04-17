@@ -1,0 +1,1292 @@
+﻿{
+  "paragraphs": [
+    {
+      "text": "%pyspark\nspark = SparkSession.builder.appName(\"FireFRPPrediction\").getOrCreate()",
+      "user": "admin",
+      "dateUpdated": "2024-04-02T20:37:54+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1711810216090_119245838",
+      "id": "paragraph_1711810216090_119245838",
+      "dateCreated": "2024-03-30T14:50:16+0000",
+      "dateStarted": "2024-04-02T20:37:54+0000",
+      "dateFinished": "2024-04-02T20:37:54+0000",
+      "status": "FINISHED",
+      "focus": true,
+      "$$hashKey": "object:1104"
+    },
+    {
+      "text": "%pyspark\ndf_modis = spark.read.csv('/dsets/modis/fire_archive_M6_96619.csv', header=True, inferSchema=True)\ndf_modis.show()",
+      "user": "admin",
+      "dateUpdated": "2024-04-02T20:37:54+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+--------+---------+----------+----+-----+----------+--------+---------+----------+----------+-------+----------+----+--------+----+\n|latitude|longitude|brightness|scan|track|  acq_date|acq_time|satellite|instrument|confidence|version|bright_t31| frp|daynight|type|\n+--------+---------+----------+----+-----+----------+--------+---------+----------+----------+-------+----------+----+--------+----+\n| -11.807| 142.0583|     313.0| 1.0|  1.0|2019-08-01|      56|    Terra|     MODIS|        48|    6.3|     297.3| 6.6|       D|   0|\n|-11.7924|  142.085|     319.3| 1.0|  1.0|2019-08-01|      56|    Terra|     MODIS|        71|    6.3|     297.3|11.3|       D|   0|\n|-12.8398| 132.8744|     311.6| 3.1|  1.7|2019-08-01|      57|    Terra|     MODIS|        42|    6.3|     298.7|23.1|       D|   0|\n|-14.4306| 143.3035|     310.1| 1.1|  1.1|2019-08-01|      57|    Terra|     MODIS|        33|    6.3|     296.1| 6.5|       D|   0|\n|-12.4953| 131.4897|     310.3| 4.0|  1.9|2019-08-01|      57|    Terra|     MODIS|        36|    6.3|     298.8|27.6|       D|   0|\n|-12.6191| 142.1998|     314.8| 1.0|  1.0|2019-08-01|      57|    Terra|     MODIS|        68|    6.3|     297.6| 9.3|       D|   0|\n|-14.3655| 143.5682|     305.4| 1.2|  1.1|2019-08-01|      57|    Terra|     MODIS|        24|    6.3|     283.9| 5.9|       D|   0|\n|-14.3195| 143.5198|     322.9| 1.2|  1.1|2019-08-01|      57|    Terra|     MODIS|        79|    6.3|     290.9|20.4|       D|   0|\n|-13.1654| 141.9715|     317.2| 1.0|  1.0|2019-08-01|      57|    Terra|     MODIS|        72|    6.3|     300.0| 9.9|       D|   0|\n|-11.5473| 132.6796|     311.5| 3.4|  1.7|2019-08-01|      57|    Terra|     MODIS|        40|    6.3|     298.7|27.3|       D|   0|\n|-11.5417|  132.649|     312.2| 3.4|  1.7|2019-08-01|      57|    Terra|     MODIS|        42|    6.3|     298.0|31.4|       D|   0|\n|-11.5471| 132.6538|     316.0| 3.4|  1.7|2019-08-01|      57|    Terra|     MODIS|        65|    6.3|     298.0|52.7|       D|   0|\n|-12.7626| 142.1759|     335.2| 1.0|  1.0|2019-08-01|      57|    Terra|     MODIS|        88|    6.3|     301.7|30.1|       D|   0|\n| -12.705|  133.907|     311.7| 2.6|  1.5|2019-08-01|      57|    Terra|     MODIS|        57|    6.3|     298.6|20.6|       D|   0|\n|-13.1092| 134.1848|     315.9| 2.4|  1.5|2019-08-01|      57|    Terra|     MODIS|        67|    6.3|     298.4|29.5|       D|   0|\n|-14.0539| 142.3327|     316.0| 1.0|  1.0|2019-08-01|      57|    Terra|     MODIS|        52|    6.3|     298.8| 7.8|       D|   0|\n|-12.6996| 133.9138|     310.9| 2.6|  1.5|2019-08-01|      57|    Terra|     MODIS|        55|    6.3|     298.7|17.6|       D|   0|\n|-12.7499| 134.5251|     314.8| 2.3|  1.5|2019-08-01|      57|    Terra|     MODIS|        66|    6.3|     299.9|22.8|       D|   0|\n|-12.7141| 134.3991|     313.9| 2.4|  1.5|2019-08-01|      57|    Terra|     MODIS|        64|    6.3|     299.2|23.0|       D|   0|\n|-12.7061| 134.4077|     314.0| 2.4|  1.5|2019-08-01|      57|    Terra|     MODIS|        64|    6.3|     300.0|21.2|       D|   0|\n+--------+---------+----------+----+-----+----------+--------+---------+----------+----------+-------+----------+----+--------+----+\nonly showing top 20 rows\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1711810234525_756692028",
+      "id": "paragraph_1711810234525_756692028",
+      "dateCreated": "2024-03-30T14:50:34+0000",
+      "dateStarted": "2024-04-02T20:37:55+0000",
+      "dateFinished": "2024-04-02T20:37:55+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:1105"
+    },
+    {
+      "text": "%pyspark\ndf_modis.count()",
+      "user": "admin",
+      "dateUpdated": "2024-04-02T20:37:55+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "36011\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1711820061374_989339507",
+      "id": "paragraph_1711820061374_989339507",
+      "dateCreated": "2024-03-30T17:34:21+0000",
+      "dateStarted": "2024-04-02T20:37:55+0000",
+      "dateFinished": "2024-04-02T20:37:55+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:1106"
+    },
+    {
+      "text": "%pyspark\ndf_modis.describe()",
+      "user": "admin",
+      "dateUpdated": "2024-04-02T20:37:55+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "DataFrame[summary: string, latitude: string, longitude: string, brightness: string, scan: string, track: string, acq_date: string, acq_time: string, satellite: string, instrument: string, confidence: string, version: string, bright_t31: string, frp: string, daynight: string, type: string]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1711820078065_35361123",
+      "id": "paragraph_1711820078065_35361123",
+      "dateCreated": "2024-03-30T17:34:38+0000",
+      "dateStarted": "2024-04-02T20:37:55+0000",
+      "dateFinished": "2024-04-02T20:37:57+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:1107"
+    },
+    {
+      "text": "%pyspark\nfrom pyspark.sql.functions import col\nfor column in df_modis.columns:\n    null_count = df_modis.where(col(column).isNull()).count()\n    print(f\"Column '{column}' has {null_count} null values.\")",
+      "user": "admin",
+      "dateUpdated": "2024-04-02T20:37:57+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Column 'latitude' has 0 null values.\nColumn 'longitude' has 0 null values.\nColumn 'brightness' has 0 null values.\nColumn 'scan' has 0 null values.\nColumn 'track' has 0 null values.\nColumn 'acq_date' has 0 null values.\nColumn 'acq_time' has 0 null values.\nColumn 'satellite' has 0 null values.\nColumn 'instrument' has 0 null values.\nColumn 'confidence' has 0 null values.\nColumn 'version' has 0 null values.\nColumn 'bright_t31' has 0 null values.\nColumn 'frp' has 0 null values.\nColumn 'daynight' has 0 null values.\nColumn 'type' has 0 null values.\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1711820092021_1697990752",
+      "id": "paragraph_1711820092021_1697990752",
+      "dateCreated": "2024-03-30T17:34:52+0000",
+      "dateStarted": "2024-04-02T20:37:57+0000",
+      "dateFinished": "2024-04-02T20:37:58+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:1108"
+    },
+    {
+      "text": "%pyspark\n\ndf_modis = df_modis.withColumn(\"brightness\", (col(\"brightness\") + col(\"bright_t31\")) / 2)\n\ndf_modis = df_modis.drop(\"bright_t31\")",
+      "user": "admin",
+      "dateUpdated": "2024-04-02T20:37:59+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1711815203618_723395168",
+      "id": "paragraph_1711815203618_723395168",
+      "dateCreated": "2024-03-30T16:13:23+0000",
+      "dateStarted": "2024-04-02T20:37:59+0000",
+      "dateFinished": "2024-04-02T20:37:59+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:1109"
+    },
+    {
+      "text": "%pyspark\nfrom pyspark.sql.functions import udf, col\nfrom pyspark.sql.types import StringType\n\ndef generalize_confidence(confidence):\n    try:\n        confidence_int = int(confidence)\n        if confidence_int <= 33:\n            return \"l\"\n        elif confidence_int <= 66:\n            return \"n\"\n        else:\n            return \"h\"\n    except ValueError:\n        # Handle unexpected cases - could log or raise an error depending on requirements\n        return \"unknown\"\n\n# Register UDF with PySpark\ngeneralize_confidence_udf = udf(generalize_confidence, StringType())\n\n# Apply UDF to both DataFrames\ndf_modis = df_modis.withColumn(\"confidence\", generalize_confidence_udf(col(\"confidence\")))",
+      "user": "admin",
+      "dateUpdated": "2024-04-02T20:37:59+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1711815252290_725777884",
+      "id": "paragraph_1711815252290_725777884",
+      "dateCreated": "2024-03-30T16:14:12+0000",
+      "dateStarted": "2024-04-02T20:37:59+0000",
+      "dateFinished": "2024-04-02T20:37:59+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:1110"
+    },
+    {
+      "text": "%pyspark\ndf_modis.show()",
+      "user": "admin",
+      "dateUpdated": "2024-04-02T20:37:59+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+--------+---------+------------------+----+-----+----------+--------+---------+----------+----------+-------+----+--------+----+\n|latitude|longitude|        brightness|scan|track|  acq_date|acq_time|satellite|instrument|confidence|version| frp|daynight|type|\n+--------+---------+------------------+----+-----+----------+--------+---------+----------+----------+-------+----+--------+----+\n| -11.807| 142.0583|            305.15| 1.0|  1.0|2019-08-01|      56|    Terra|     MODIS|         n|    6.3| 6.6|       D|   0|\n|-11.7924|  142.085|             308.3| 1.0|  1.0|2019-08-01|      56|    Terra|     MODIS|         h|    6.3|11.3|       D|   0|\n|-12.8398| 132.8744|            305.15| 3.1|  1.7|2019-08-01|      57|    Terra|     MODIS|         n|    6.3|23.1|       D|   0|\n|-14.4306| 143.3035|             303.1| 1.1|  1.1|2019-08-01|      57|    Terra|     MODIS|         l|    6.3| 6.5|       D|   0|\n|-12.4953| 131.4897|            304.55| 4.0|  1.9|2019-08-01|      57|    Terra|     MODIS|         n|    6.3|27.6|       D|   0|\n|-12.6191| 142.1998|306.20000000000005| 1.0|  1.0|2019-08-01|      57|    Terra|     MODIS|         h|    6.3| 9.3|       D|   0|\n|-14.3655| 143.5682|            294.65| 1.2|  1.1|2019-08-01|      57|    Terra|     MODIS|         l|    6.3| 5.9|       D|   0|\n|-14.3195| 143.5198|             306.9| 1.2|  1.1|2019-08-01|      57|    Terra|     MODIS|         h|    6.3|20.4|       D|   0|\n|-13.1654| 141.9715|             308.6| 1.0|  1.0|2019-08-01|      57|    Terra|     MODIS|         h|    6.3| 9.9|       D|   0|\n|-11.5473| 132.6796|             305.1| 3.4|  1.7|2019-08-01|      57|    Terra|     MODIS|         n|    6.3|27.3|       D|   0|\n|-11.5417|  132.649|             305.1| 3.4|  1.7|2019-08-01|      57|    Terra|     MODIS|         n|    6.3|31.4|       D|   0|\n|-11.5471| 132.6538|             307.0| 3.4|  1.7|2019-08-01|      57|    Terra|     MODIS|         n|    6.3|52.7|       D|   0|\n|-12.7626| 142.1759|            318.45| 1.0|  1.0|2019-08-01|      57|    Terra|     MODIS|         h|    6.3|30.1|       D|   0|\n| -12.705|  133.907|            305.15| 2.6|  1.5|2019-08-01|      57|    Terra|     MODIS|         n|    6.3|20.6|       D|   0|\n|-13.1092| 134.1848|            307.15| 2.4|  1.5|2019-08-01|      57|    Terra|     MODIS|         h|    6.3|29.5|       D|   0|\n|-14.0539| 142.3327|             307.4| 1.0|  1.0|2019-08-01|      57|    Terra|     MODIS|         n|    6.3| 7.8|       D|   0|\n|-12.6996| 133.9138|304.79999999999995| 2.6|  1.5|2019-08-01|      57|    Terra|     MODIS|         n|    6.3|17.6|       D|   0|\n|-12.7499| 134.5251|            307.35| 2.3|  1.5|2019-08-01|      57|    Terra|     MODIS|         n|    6.3|22.8|       D|   0|\n|-12.7141| 134.3991|306.54999999999995| 2.4|  1.5|2019-08-01|      57|    Terra|     MODIS|         n|    6.3|23.0|       D|   0|\n|-12.7061| 134.4077|             307.0| 2.4|  1.5|2019-08-01|      57|    Terra|     MODIS|         n|    6.3|21.2|       D|   0|\n+--------+---------+------------------+----+-----+----------+--------+---------+----------+----------+-------+----+--------+----+\nonly showing top 20 rows\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1711818076231_1572328412",
+      "id": "paragraph_1711818076231_1572328412",
+      "dateCreated": "2024-03-30T17:01:16+0000",
+      "dateStarted": "2024-04-02T20:37:59+0000",
+      "dateFinished": "2024-04-02T20:37:59+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:1111"
+    },
+    {
+      "text": "%pyspark\nfrom pyspark.sql.functions import avg\naverage_df = df_modis.agg(avg(\"brightness\").alias(\"Average\"))\naverage_df.show()",
+      "user": "admin",
+      "dateUpdated": "2024-04-02T20:37:59+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+-----------------+\n|          Average|\n+-----------------+\n|315.0449168309689|\n+-----------------+\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1711995167946_1162733119",
+      "id": "paragraph_1711995167946_1162733119",
+      "dateCreated": "2024-04-01T18:12:47+0000",
+      "dateStarted": "2024-04-02T20:37:59+0000",
+      "dateFinished": "2024-04-02T20:37:59+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:1112"
+    },
+    {
+      "text": "%pyspark\ndf_viirs = spark.read.csv('/dsets/viirs/fire_archive_V1_96617.csv', header=True, inferSchema=True)\ndf_viirs.show()",
+      "user": "admin",
+      "dateUpdated": "2024-04-02T20:37:59+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+---------+---------+----------+----+-----+----------+--------+---------+----------+----------+-------+----------+----+----+\n| latitude|longitude|bright_ti4|scan|track|  acq_date|acq_time|satellite|instrument|confidence|version|bright_ti5| frp|type|\n+---------+---------+----------+----+-----+----------+--------+---------+----------+----------+-------+----------+----+----+\n|-34.45902| 150.8804|     326.5| 0.6| 0.71|2019-08-01|     246|        N|     VIIRS|         n|      1|     290.7| 5.8|   3|\n|-31.70724|151.07191|     367.0|0.56| 0.69|2019-08-01|     247|        N|     VIIRS|         h|      1|     291.9|10.4|   0|\n|-31.39626|149.65253|     325.2|0.68| 0.74|2019-08-01|     247|        N|     VIIRS|         n|      1|     292.7| 5.6|   0|\n|-30.39774|152.06432|     347.8|0.48| 0.65|2019-08-01|     247|        N|     VIIRS|         n|      1|     287.6| 9.1|   0|\n|-31.20248|151.89766|     350.7| 0.5| 0.66|2019-08-01|     247|        N|     VIIRS|         n|      1|     292.3| 9.4|   0|\n| -31.2039|151.89574|     353.3| 0.5| 0.66|2019-08-01|     247|        N|     VIIRS|         n|      1|     290.9|12.7|   0|\n| -31.3728|  150.689|     327.5|0.59|  0.7|2019-08-01|     247|        N|     VIIRS|         n|      1|     291.3| 3.5|   0|\n|-30.08108|151.05177|     367.0|0.55| 0.68|2019-08-01|     247|        N|     VIIRS|         h|      1|     291.9|16.6|   0|\n|-31.78818|148.49576|     367.0|0.79| 0.78|2019-08-01|     247|        N|     VIIRS|         h|      1|     294.7|44.3|   0|\n|-31.78719|148.49466|     367.0|0.79| 0.78|2019-08-01|     247|        N|     VIIRS|         h|      1|     294.0|31.2|   0|\n|-42.71249|147.58301|     326.5|0.46| 0.39|2019-08-01|     424|        N|     VIIRS|         n|      1|     287.1| 3.0|   0|\n|-42.37209|147.48753|     330.0|0.47| 0.39|2019-08-01|     425|        N|     VIIRS|         n|      1|     281.0| 6.0|   0|\n|-42.36105|146.92848|     327.4|0.45| 0.39|2019-08-01|     425|        N|     VIIRS|         n|      1|     280.8| 1.9|   0|\n|-42.29099|146.88106|     340.9|0.45| 0.39|2019-08-01|     425|        N|     VIIRS|         n|      1|     284.7|13.0|   0|\n|-41.00097|145.63232|     327.1|0.43| 0.38|2019-08-01|     425|        N|     VIIRS|         n|      1|     284.4| 8.5|   0|\n|-36.57822|145.84651|     328.0| 0.5| 0.41|2019-08-01|     426|        N|     VIIRS|         n|      1|     285.9| 2.4|   0|\n| -37.0943| 147.5002|     341.3|0.38| 0.43|2019-08-01|     426|        N|     VIIRS|         n|      1|     284.1| 3.0|   0|\n|-34.91529|149.82462|     325.9|0.56| 0.51|2019-08-01|     426|        N|     VIIRS|         n|      1|     287.1| 3.5|   0|\n|-34.46161|150.88301|     325.7|0.33| 0.55|2019-08-01|     426|        N|     VIIRS|         n|      1|     292.5| 2.4|   2|\n|-36.34436|149.50899|     344.2| 0.5| 0.49|2019-08-01|     426|        N|     VIIRS|         n|      1|     290.7| 9.5|   0|\n+---------+---------+----------+----+-----+----------+--------+---------+----------+----------+-------+----------+----+----+\nonly showing top 20 rows\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1711810261521_1150492166",
+      "id": "paragraph_1711810261521_1150492166",
+      "dateCreated": "2024-03-30T14:51:01+0000",
+      "dateStarted": "2024-04-02T20:37:59+0000",
+      "dateFinished": "2024-04-02T20:38:00+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:1113"
+    },
+    {
+      "text": "%pyspark\ndf_viirs.count()",
+      "user": "admin",
+      "dateUpdated": "2024-04-02T20:38:00+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "184778\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1711820893423_1147245804",
+      "id": "paragraph_1711820893423_1147245804",
+      "dateCreated": "2024-03-30T17:48:13+0000",
+      "dateStarted": "2024-04-02T20:38:00+0000",
+      "dateFinished": "2024-04-02T20:38:00+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:1114"
+    },
+    {
+      "text": "%pyspark\ndf_viirs.describe()",
+      "user": "admin",
+      "dateUpdated": "2024-04-02T20:38:00+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "DataFrame[summary: string, latitude: string, longitude: string, bright_ti4: string, scan: string, track: string, acq_date: string, acq_time: string, satellite: string, instrument: string, confidence: string, version: string, bright_ti5: string, frp: string, type: string]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1711820901621_2034117875",
+      "id": "paragraph_1711820901621_2034117875",
+      "dateCreated": "2024-03-30T17:48:21+0000",
+      "dateStarted": "2024-04-02T20:38:00+0000",
+      "dateFinished": "2024-04-02T20:38:02+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:1115"
+    },
+    {
+      "text": "%pyspark\nfrom pyspark.sql.functions import col\nfor column in df_viirs.columns:\n    null_count = df_viirs.where(col(column).isNull()).count()\n    print(f\"Column '{column}' has {null_count} null values.\")",
+      "user": "admin",
+      "dateUpdated": "2024-04-02T20:38:02+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Column 'latitude' has 0 null values.\nColumn 'longitude' has 0 null values.\nColumn 'bright_ti4' has 0 null values.\nColumn 'scan' has 0 null values.\nColumn 'track' has 0 null values.\nColumn 'acq_date' has 0 null values.\nColumn 'acq_time' has 0 null values.\nColumn 'satellite' has 0 null values.\nColumn 'instrument' has 0 null values.\nColumn 'confidence' has 0 null values.\nColumn 'version' has 0 null values.\nColumn 'bright_ti5' has 0 null values.\nColumn 'frp' has 0 null values.\nColumn 'type' has 0 null values.\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1711820912300_693306669",
+      "id": "paragraph_1711820912300_693306669",
+      "dateCreated": "2024-03-30T17:48:32+0000",
+      "dateStarted": "2024-04-02T20:38:02+0000",
+      "dateFinished": "2024-04-02T20:38:04+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:1116"
+    },
+    {
+      "text": "%pyspark\nfrom pyspark.sql.functions import udf, col\nfrom pyspark.sql.types import StringType\n\nviirs_daynight_udf = udf(lambda x: 'N' if int(x[:2]) >= 18 or int(x[:2]) < 6 else 'D', StringType())\ndf_viirs = df_viirs.withColumn(\"acq_time_formatted\", (col(\"acq_time\") / 100).cast(\"int\").cast(StringType()))\ndf_viirs = df_viirs.withColumn(\"daynight\", viirs_daynight_udf(\"acq_time_formatted\"))",
+      "user": "admin",
+      "dateUpdated": "2024-04-02T20:38:04+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1711812866724_1725242287",
+      "id": "paragraph_1711812866724_1725242287",
+      "dateCreated": "2024-03-30T15:34:26+0000",
+      "dateStarted": "2024-04-02T20:38:04+0000",
+      "dateFinished": "2024-04-02T20:38:04+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:1117"
+    },
+    {
+      "text": "%pyspark\ndf_viirs = df_viirs.withColumn(\"brightness\", (col(\"bright_ti4\") + col(\"bright_ti5\")) / 2)\n\ndf_viirs = df_viirs.drop(\"bright_ti4\", \"bright_ti5\", \"acq_time_formatted\")",
+      "user": "admin",
+      "dateUpdated": "2024-04-02T20:38:04+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1711812941936_1940282823",
+      "id": "paragraph_1711812941936_1940282823",
+      "dateCreated": "2024-03-30T15:35:41+0000",
+      "dateStarted": "2024-04-02T20:38:04+0000",
+      "dateFinished": "2024-04-02T20:38:04+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:1118"
+    },
+    {
+      "text": "%pyspark\nfrom pyspark.sql.functions import avg\naverage_df = df_viirs.agg(avg(\"brightness\").alias(\"Average\"))\naverage_df.show()",
+      "user": "admin",
+      "dateUpdated": "2024-04-02T20:38:05+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+-----------------+\n|          Average|\n+-----------------+\n|314.5988126292077|\n+-----------------+\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1711995236647_290858847",
+      "id": "paragraph_1711995236647_290858847",
+      "dateCreated": "2024-04-01T18:13:56+0000",
+      "dateStarted": "2024-04-02T20:38:05+0000",
+      "dateFinished": "2024-04-02T20:38:05+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:1119"
+    },
+    {
+      "text": "%pyspark\ndf_viirs.show()\ndf_modis.show()",
+      "user": "admin",
+      "dateUpdated": "2024-04-02T20:38:05+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+---------+---------+----+-----+----------+--------+---------+----------+----------+-------+----+----+--------+------------------+\n| latitude|longitude|scan|track|  acq_date|acq_time|satellite|instrument|confidence|version| frp|type|daynight|        brightness|\n+---------+---------+----+-----+----------+--------+---------+----------+----------+-------+----+----+--------+------------------+\n|-34.45902| 150.8804| 0.6| 0.71|2019-08-01|     246|        N|     VIIRS|         n|      1| 5.8|   3|       N|             308.6|\n|-31.70724|151.07191|0.56| 0.69|2019-08-01|     247|        N|     VIIRS|         h|      1|10.4|   0|       N|            329.45|\n|-31.39626|149.65253|0.68| 0.74|2019-08-01|     247|        N|     VIIRS|         n|      1| 5.6|   0|       N|            308.95|\n|-30.39774|152.06432|0.48| 0.65|2019-08-01|     247|        N|     VIIRS|         n|      1| 9.1|   0|       N|317.70000000000005|\n|-31.20248|151.89766| 0.5| 0.66|2019-08-01|     247|        N|     VIIRS|         n|      1| 9.4|   0|       N|             321.5|\n| -31.2039|151.89574| 0.5| 0.66|2019-08-01|     247|        N|     VIIRS|         n|      1|12.7|   0|       N|             322.1|\n| -31.3728|  150.689|0.59|  0.7|2019-08-01|     247|        N|     VIIRS|         n|      1| 3.5|   0|       N|             309.4|\n|-30.08108|151.05177|0.55| 0.68|2019-08-01|     247|        N|     VIIRS|         h|      1|16.6|   0|       N|            329.45|\n|-31.78818|148.49576|0.79| 0.78|2019-08-01|     247|        N|     VIIRS|         h|      1|44.3|   0|       N|            330.85|\n|-31.78719|148.49466|0.79| 0.78|2019-08-01|     247|        N|     VIIRS|         h|      1|31.2|   0|       N|             330.5|\n|-42.71249|147.58301|0.46| 0.39|2019-08-01|     424|        N|     VIIRS|         n|      1| 3.0|   0|       N|             306.8|\n|-42.37209|147.48753|0.47| 0.39|2019-08-01|     425|        N|     VIIRS|         n|      1| 6.0|   0|       N|             305.5|\n|-42.36105|146.92848|0.45| 0.39|2019-08-01|     425|        N|     VIIRS|         n|      1| 1.9|   0|       N|             304.1|\n|-42.29099|146.88106|0.45| 0.39|2019-08-01|     425|        N|     VIIRS|         n|      1|13.0|   0|       N|312.79999999999995|\n|-41.00097|145.63232|0.43| 0.38|2019-08-01|     425|        N|     VIIRS|         n|      1| 8.5|   0|       N|            305.75|\n|-36.57822|145.84651| 0.5| 0.41|2019-08-01|     426|        N|     VIIRS|         n|      1| 2.4|   0|       N|            306.95|\n| -37.0943| 147.5002|0.38| 0.43|2019-08-01|     426|        N|     VIIRS|         n|      1| 3.0|   0|       N|312.70000000000005|\n|-34.91529|149.82462|0.56| 0.51|2019-08-01|     426|        N|     VIIRS|         n|      1| 3.5|   0|       N|             306.5|\n|-34.46161|150.88301|0.33| 0.55|2019-08-01|     426|        N|     VIIRS|         n|      1| 2.4|   2|       N|             309.1|\n|-36.34436|149.50899| 0.5| 0.49|2019-08-01|     426|        N|     VIIRS|         n|      1| 9.5|   0|       N|            317.45|\n+---------+---------+----+-----+----------+--------+---------+----------+----------+-------+----+----+--------+------------------+\nonly showing top 20 rows\n\n+--------+---------+------------------+----+-----+----------+--------+---------+----------+----------+-------+----+--------+----+\n|latitude|longitude|        brightness|scan|track|  acq_date|acq_time|satellite|instrument|confidence|version| frp|daynight|type|\n+--------+---------+------------------+----+-----+----------+--------+---------+----------+----------+-------+----+--------+----+\n| -11.807| 142.0583|            305.15| 1.0|  1.0|2019-08-01|      56|    Terra|     MODIS|         n|    6.3| 6.6|       D|   0|\n|-11.7924|  142.085|             308.3| 1.0|  1.0|2019-08-01|      56|    Terra|     MODIS|         h|    6.3|11.3|       D|   0|\n|-12.8398| 132.8744|            305.15| 3.1|  1.7|2019-08-01|      57|    Terra|     MODIS|         n|    6.3|23.1|       D|   0|\n|-14.4306| 143.3035|             303.1| 1.1|  1.1|2019-08-01|      57|    Terra|     MODIS|         l|    6.3| 6.5|       D|   0|\n|-12.4953| 131.4897|            304.55| 4.0|  1.9|2019-08-01|      57|    Terra|     MODIS|         n|    6.3|27.6|       D|   0|\n|-12.6191| 142.1998|306.20000000000005| 1.0|  1.0|2019-08-01|      57|    Terra|     MODIS|         h|    6.3| 9.3|       D|   0|\n|-14.3655| 143.5682|            294.65| 1.2|  1.1|2019-08-01|      57|    Terra|     MODIS|         l|    6.3| 5.9|       D|   0|\n|-14.3195| 143.5198|             306.9| 1.2|  1.1|2019-08-01|      57|    Terra|     MODIS|         h|    6.3|20.4|       D|   0|\n|-13.1654| 141.9715|             308.6| 1.0|  1.0|2019-08-01|      57|    Terra|     MODIS|         h|    6.3| 9.9|       D|   0|\n|-11.5473| 132.6796|             305.1| 3.4|  1.7|2019-08-01|      57|    Terra|     MODIS|         n|    6.3|27.3|       D|   0|\n|-11.5417|  132.649|             305.1| 3.4|  1.7|2019-08-01|      57|    Terra|     MODIS|         n|    6.3|31.4|       D|   0|\n|-11.5471| 132.6538|             307.0| 3.4|  1.7|2019-08-01|      57|    Terra|     MODIS|         n|    6.3|52.7|       D|   0|\n|-12.7626| 142.1759|            318.45| 1.0|  1.0|2019-08-01|      57|    Terra|     MODIS|         h|    6.3|30.1|       D|   0|\n| -12.705|  133.907|            305.15| 2.6|  1.5|2019-08-01|      57|    Terra|     MODIS|         n|    6.3|20.6|       D|   0|\n|-13.1092| 134.1848|            307.15| 2.4|  1.5|2019-08-01|      57|    Terra|     MODIS|         h|    6.3|29.5|       D|   0|\n|-14.0539| 142.3327|             307.4| 1.0|  1.0|2019-08-01|      57|    Terra|     MODIS|         n|    6.3| 7.8|       D|   0|\n|-12.6996| 133.9138|304.79999999999995| 2.6|  1.5|2019-08-01|      57|    Terra|     MODIS|         n|    6.3|17.6|       D|   0|\n|-12.7499| 134.5251|            307.35| 2.3|  1.5|2019-08-01|      57|    Terra|     MODIS|         n|    6.3|22.8|       D|   0|\n|-12.7141| 134.3991|306.54999999999995| 2.4|  1.5|2019-08-01|      57|    Terra|     MODIS|         n|    6.3|23.0|       D|   0|\n|-12.7061| 134.4077|             307.0| 2.4|  1.5|2019-08-01|      57|    Terra|     MODIS|         n|    6.3|21.2|       D|   0|\n+--------+---------+------------------+----+-----+----------+--------+---------+----------+----------+-------+----+--------+----+\nonly showing top 20 rows\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1711815611340_1800412844",
+      "id": "paragraph_1711815611340_1800412844",
+      "dateCreated": "2024-03-30T16:20:11+0000",
+      "dateStarted": "2024-04-02T20:38:05+0000",
+      "dateFinished": "2024-04-02T20:38:05+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:1120"
+    },
+    {
+      "text": "%pyspark\ndf = df_modis.union(df_viirs)",
+      "user": "admin",
+      "dateUpdated": "2024-04-02T20:38:05+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1711815877564_1620097194",
+      "id": "paragraph_1711815877564_1620097194",
+      "dateCreated": "2024-03-30T16:24:37+0000",
+      "dateStarted": "2024-04-02T20:38:05+0000",
+      "dateFinished": "2024-04-02T20:38:05+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:1121"
+    },
+    {
+      "text": "%pyspark\nfrom pyspark.sql import SparkSession\nfrom pyspark.ml.feature import VectorAssembler\nfrom pyspark.ml.regression import RandomForestRegressor\nfrom pyspark.ml.evaluation import RegressionEvaluator\nfrom pyspark.ml import Pipeline\nfrom pyspark.sql.functions import year, month, dayofmonth\n\ndf = df.withColumn(\"track\", col(\"track\").cast(\"float\"))\n\nVectorAssembler = VectorAssembler(inputCols=['latitude', 'longitude', 'brightness', 'scan', 'type','track'], outputCol=\"features\", handleInvalid=\"skip\")",
+      "user": "admin",
+      "dateUpdated": "2024-04-02T20:38:05+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1711815960779_2609390",
+      "id": "paragraph_1711815960779_2609390",
+      "dateCreated": "2024-03-30T16:26:00+0000",
+      "dateStarted": "2024-04-02T20:38:05+0000",
+      "dateFinished": "2024-04-02T20:38:06+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:1122"
+    },
+    {
+      "text": "%pyspark\nfrom pyspark.ml.feature import StandardScaler\nStandardScaler = StandardScaler(inputCol=\"features\", outputCol=\"features_scaled\", withStd=True, withMean=False)",
+      "user": "admin",
+      "dateUpdated": "2024-04-02T20:38:06+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1711822783297_952298715",
+      "id": "paragraph_1711822783297_952298715",
+      "dateCreated": "2024-03-30T18:19:43+0000",
+      "dateStarted": "2024-04-02T20:38:06+0000",
+      "dateFinished": "2024-04-02T20:38:06+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:1123"
+    },
+    {
+      "text": "%pyspark\nfrom pyspark.ml.feature import OneHotEncoder, StringIndexer\n\nconfidenceIndex = StringIndexer(inputCol=\"confidence\", outputCol=\"confidenceIndex\")\nconfidenceEncoder = OneHotEncoder(inputCols=[\"confidenceIndex\"], outputCols=[\"confidenceVec\"])\ndaynightIndex = StringIndexer(inputCol=\"daynight\", outputCol=\"daynightIndex\")\ndaynightEncoder = OneHotEncoder(inputCols=[\"daynightIndex\"], outputCols=[\"daynightVec\"])",
+      "user": "admin",
+      "dateUpdated": "2024-04-02T20:38:06+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1711821667925_932836225",
+      "id": "paragraph_1711821667925_932836225",
+      "dateCreated": "2024-03-30T18:01:07+0000",
+      "dateStarted": "2024-04-02T20:38:06+0000",
+      "dateFinished": "2024-04-02T20:38:06+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:1124"
+    },
+    {
+      "text": "%pyspark\ntrain_data, test_data = df.randomSplit([0.8, 0.2], seed=3)",
+      "user": "admin",
+      "dateUpdated": "2024-04-02T20:38:06+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1711821660686_1438310915",
+      "id": "paragraph_1711821660686_1438310915",
+      "dateCreated": "2024-03-30T18:01:00+0000",
+      "dateStarted": "2024-04-02T20:38:06+0000",
+      "dateFinished": "2024-04-02T20:38:06+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:1125"
+    },
+    {
+      "text": "%pyspark\ntrain_data.count()",
+      "user": "admin",
+      "dateUpdated": "2024-04-02T20:38:06+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "176905\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1711820311241_1411493472",
+      "id": "paragraph_1711820311241_1411493472",
+      "dateCreated": "2024-03-30T17:38:31+0000",
+      "dateStarted": "2024-04-02T20:38:06+0000",
+      "dateFinished": "2024-04-02T20:38:07+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:1126"
+    },
+    {
+      "text": "%pyspark\ntest_data.count()",
+      "user": "admin",
+      "dateUpdated": "2024-04-02T20:38:07+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "43884\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1711952926212_1716888134",
+      "id": "paragraph_1711952926212_1716888134",
+      "dateCreated": "2024-04-01T06:28:46+0000",
+      "dateStarted": "2024-04-02T20:38:07+0000",
+      "dateFinished": "2024-04-02T20:38:08+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:1127"
+    },
+    {
+      "text": "%pyspark\nrf = RandomForestRegressor(featuresCol=\"features_scaled\", labelCol=\"frp\").setSeed(3)",
+      "user": "admin",
+      "dateUpdated": "2024-04-02T20:38:08+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1711819205036_1000644644",
+      "id": "paragraph_1711819205036_1000644644",
+      "dateCreated": "2024-03-30T17:20:05+0000",
+      "dateStarted": "2024-04-02T20:38:08+0000",
+      "dateFinished": "2024-04-02T20:38:08+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:1128"
+    },
+    {
+      "text": "%pyspark\n# Create the pipeline\npipeline = Pipeline(stages=[VectorAssembler, StandardScaler, daynightIndex, daynightEncoder, confidenceIndex, confidenceEncoder, rf])\n\n# Train the model\nmodel = pipeline.fit(train_data)\n\n# Make predictions\npredictions = model.transform(test_data)\n\n# Evaluate the model\nevaluator = RegressionEvaluator(labelCol=\"frp\", predictionCol=\"prediction\", metricName=\"rmse\")\nrmse = evaluator.evaluate(predictions)\nprint(f\"Root Mean Squared Error (RMSE) on test data = {rmse}\")",
+      "user": "admin",
+      "dateUpdated": "2024-04-02T20:38:08+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Root Mean Squared Error (RMSE) on test data = 43.4053122346888\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1711819215131_1411449498",
+      "id": "paragraph_1711819215131_1411449498",
+      "dateCreated": "2024-03-30T17:20:15+0000",
+      "dateStarted": "2024-04-02T20:38:08+0000",
+      "dateFinished": "2024-04-02T20:38:15+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:1129"
+    },
+    {
+      "text": "%pyspark\n",
+      "user": "admin",
+      "dateUpdated": "2024-04-02T21:11:46+0000",
+      "progress": 0,
+      "config": {
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1712092306202_1518997291",
+      "id": "paragraph_1712092306202_1518997291",
+      "dateCreated": "2024-04-02T21:11:46+0000",
+      "status": "READY",
+      "$$hashKey": "object:1130"
+    },
+    {
+      "text": "%pyspark\nevaluator_r2 = RegressionEvaluator(labelCol=\"frp\", predictionCol=\"prediction\", metricName=\"r2\")\nr2 = evaluator_r2.evaluate(predictions)\nprint(f\"R-squared (R²) on test data = {r2}\")",
+      "user": "admin",
+      "dateUpdated": "2024-04-02T20:38:15+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "R-squared (R²) on test data = 0.7454316490131132\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1711816857039_719537129",
+      "id": "paragraph_1711816857039_719537129",
+      "dateCreated": "2024-03-30T16:40:57+0000",
+      "dateStarted": "2024-04-02T20:38:15+0000",
+      "dateFinished": "2024-04-02T20:38:16+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:1131"
+    },
+    {
+      "text": "%pyspark\nfrom pyspark.ml.tuning import ParamGridBuilder, CrossValidator\n\n# Define the parameter grid\nparam_grid = ParamGridBuilder() \\\n    .addGrid(rf.numTrees, [10, 50, 100]) \\\n    .addGrid(rf.maxDepth, [5, 10, 15]) \\\n    .build()\n\n# Create cross-validator\ncross_validator = CrossValidator(estimator=pipeline,\n                                 estimatorParamMaps=param_grid,\n                                 evaluator=evaluator,\n                                 numFolds=3)\n\n# Run cross-validation, and choose the best set of parameters\ncv_model = cross_validator.fit(train_data)\n\n# Make predictions using the best model\npredictions_cv = cv_model.transform(test_data)\n\n# Evaluate the model with best parameters\nrmse_cv = evaluator.evaluate(predictions_cv)\nprint(f\"Tuned Root Mean Squared Error (RMSE) on test data = {rmse_cv}\")\n\n# Evaluate R-squared with best parameters\nr2_cv = evaluator_r2.evaluate(predictions_cv)\nprint(f\"Tuned R-squared (R²) on test data = {r2_cv}\")\n\n# Get the best model's parameters\nbest_model = cv_model.bestModel\nbest_params = best_model.stages[-1].extractParamMap()\nprint(\"Best Parameters:\")\nfor param, value in best_params.items():\n    print(f\"{param.name}: {value}\")\n\n",
+      "user": "admin",
+      "dateUpdated": "2024-04-02T20:38:16+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Tuned Root Mean Squared Error (RMSE) on test data = 31.436090309241035\nTuned R-squared (R²) on test data = 0.8664709695779715\nBest Parameters:\nbootstrap: True\ncacheNodeIds: False\ncheckpointInterval: 10\nfeatureSubsetStrategy: auto\nfeaturesCol: features_scaled\nimpurity: variance\nlabelCol: frp\nleafCol: \nmaxBins: 32\nmaxDepth: 15\nmaxMemoryInMB: 256\nminInfoGain: 0.0\nminInstancesPerNode: 1\nminWeightFractionPerNode: 0.0\nnumTrees: 50\npredictionCol: prediction\nseed: 3\nsubsamplingRate: 1.0\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1711823449089_1996137951",
+      "id": "paragraph_1711823449089_1996137951",
+      "dateCreated": "2024-03-30T18:30:49+0000",
+      "dateStarted": "2024-04-02T20:38:16+0000",
+      "dateFinished": "2024-04-02T20:44:13+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:1132"
+    },
+    {
+      "text": "%pyspark\r\n# Import necessary libraries\r\nfrom pyspark.sql import SparkSession\r\nimport folium\r\nfrom folium.plugins import MarkerCluster\r\nimport branca.colormap as cm\r\n\r\n# Convert the PySpark DataFrame to a Pandas DataFrame\r\npandas_df = df.filter(df['brightness'] > 200).toPandas()\r\n\r\n# Create a colormap based on brightness values\r\ncolormap = cm.LinearColormap(colors=['white','orange','red', 'brown'], vmin=pandas_df['brightness'].min(), vmax=pandas_df['brightness'].max())\r\n\r\n# Create a Folium map centered around the average latitude and longitude from your data\r\nmap_center_latitude = pandas_df['latitude'].mean()\r\nmap_center_longitude = pandas_df['longitude'].mean()\r\nm = folium.Map(location=[map_center_latitude, map_center_longitude], zoom_start=5)\r\n\r\n# Add colored markers to the map based on brightness\r\nfor index, row in pandas_df.iterrows():\r\n    popup_message = f\"Brightness: {row['brightness']}, Fire Radiating Power: {row['frp']}\"\r\n    folium.CircleMarker(\r\n        location=[row['latitude'], row['longitude']],\r\n        color=colormap(row['brightness']),\r\n        fill=True,\r\n        radius=(row['frp']**(1/2)),\r\n        fill_color=colormap(row['brightness']),\r\n        tooltip=popup_message,\r\n        popup=folium.Popup(popup_message, max_width=300)\r\n    ).add_to(m)\r\n\r\n# Add the colormap to the map\r\ncolormap.add_to(m)\r\n\r\n# Save the map to an HTML file\r\nmap_html_file_path = \"/home/hadoop/sandbox/dataset/map_visualization.html\"\r\nm.save(map_html_file_path)\r\n\r\n# Print the path to the saved map\r\nprint(f\"Map visualization saved to {map_html_file_path}.\")\r\n",
+      "user": "admin",
+      "dateUpdated": "2024-04-02T20:44:13+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Map visualization saved to /home/hadoop/sandbox/dataset/map_visualization.html.\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1711823457851_1902610865",
+      "id": "paragraph_1711823457851_1902610865",
+      "dateCreated": "2024-03-30T18:30:57+0000",
+      "dateStarted": "2024-04-02T20:44:13+0000",
+      "dateFinished": "2024-04-02T20:45:17+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:1133"
+    },
+    {
+      "text": "%sh\ncd sandbox/dataset\npython3 -m http.server",
+      "user": "admin",
+      "dateUpdated": "2024-04-02T20:45:17+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sh",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/sh",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "ERROR",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Traceback (most recent call last):\n  File \"/usr/lib/python3.8/runpy.py\", line 194, in _run_module_as_main\n    return _run_code(code, main_globals, None,\n  File \"/usr/lib/python3.8/runpy.py\", line 87, in _run_code\n    exec(code, run_globals)\n  File \"/usr/lib/python3.8/http/server.py\", line 1294, in <module>\n    test(\n  File \"/usr/lib/python3.8/http/server.py\", line 1249, in test\n    with ServerClass(addr, HandlerClass) as httpd:\n  File \"/usr/lib/python3.8/socketserver.py\", line 452, in __init__\n    self.server_bind()\n  File \"/usr/lib/python3.8/http/server.py\", line 1292, in server_bind\n    return super().server_bind()\n  File \"/usr/lib/python3.8/http/server.py\", line 138, in server_bind\n    socketserver.TCPServer.server_bind(self)\n  File \"/usr/lib/python3.8/socketserver.py\", line 466, in server_bind\n    self.socket.bind(self.server_address)\nOSError: [Errno 98] Address already in use\n"
+          },
+          {
+            "type": "TEXT",
+            "data": "ExitValue: 1"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1712024232773_239341430",
+      "id": "paragraph_1712024232773_239341430",
+      "dateCreated": "2024-04-02T02:17:12+0000",
+      "dateStarted": "2024-04-02T20:45:17+0000",
+      "dateFinished": "2024-04-02T20:45:18+0000",
+      "status": "ERROR",
+      "$$hashKey": "object:1134"
+    },
+    {
+      "text": "%pyspark\n",
+      "user": "admin",
+      "dateUpdated": "2024-04-02T02:17:21+0000",
+      "progress": 0,
+      "config": {
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1712024241616_1428215892",
+      "id": "paragraph_1712024241616_1428215892",
+      "dateCreated": "2024-04-02T02:17:21+0000",
+      "status": "READY",
+      "$$hashKey": "object:1135"
+    }
+  ],
+  "name": "firepredict",
+  "id": "2JUUZ5ZNA",
+  "defaultInterpreterGroup": "spark",
+  "version": "0.10.1",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "isZeppelinNotebookCronEnable": false,
+    "looknfeel": "default",
+    "personalizedMode": "false"
+  },
+  "info": {
+    "isRunning": false
+  },
+  "path": "/firepredict"
+}
